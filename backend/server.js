@@ -40,10 +40,9 @@ const corsOptions = {
     callback(new Error(`Origin ${origin} not allowed by CORS`));
   },
   credentials: true,
+  optionsSuccessStatus: 204,
 };
 app.use(cors(corsOptions));
-// Ensure preflight requests are handled
-app.options("*", cors(corsOptions));
 
 // Database Connection
 connectDB();
