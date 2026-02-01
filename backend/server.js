@@ -23,12 +23,27 @@ const app = express();
 app.use(express.json()); // Parse JSON bodies
 app.use(cookieParser()); // Parse cookies for httpOnly JWTs
 
-// Allow frontend dev server to send credentials (cookies)
+// Allow dev and production frontends to send credentials (cookies)
+// Configure via env: CORS_ORIGINS="http://localhost:5173,https://echoprep.netlify.app"
+// Also support legacy CORS_ORIGIN
+const originsEnv = process.env.CORS_ORIGINS || process.env.CORS_ORIGIN || "http://localhost:5173,https://echoprep.netlify.app";
+const allowedOrigins = originsEnv.split(",").map(o => o.trim());
 const corsOptions = {
-  origin: "http://localhost:5173", // Your frontend URL
+  origin: function (origin, callback) {
+    // Allow non-browser requests (no origin)
+    if (!origin) return callback(null, true);
+
+    // Allow exact matches from env, plus any Netlify subdomain
+    const isAllowed = allowedOrigins.includes(origin) || /^https:\/\/[^/]+\.netlify\.app$/.test(origin);
+    if (isAllowed) return callback(null, true);
+
+    callback(new Error(`Origin ${origin} not allowed by CORS`));
+  },
   credentials: true,
 };
-app.use(cors(corsOptions)); 
+app.use(cors(corsOptions));
+// Ensure preflight requests are handled
+app.options("*", cors(corsOptions));
 
 // Database Connection
 connectDB();

@@ -57,7 +57,9 @@ const registerUser = asyncHandler(async (req, res) => {
     // Auto-login after register: issue httpOnly cookies
     const options = {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production"
+        secure: process.env.NODE_ENV === "production",
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+        path: "/",
     };
 
     return res.status(201)
@@ -100,8 +102,8 @@ const loginUser = asyncHandler(async (req, res) => {
     const options = {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
-        path: "/"
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+        path: "/",
     };
 
     return res
@@ -135,8 +137,8 @@ const logoutUser = asyncHandler(async(req, res) => {
     const options = {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
-        path: "/"
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+        path: "/",
     };
 
     return res
@@ -179,8 +181,8 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
         const options = {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
-            sameSite: "lax",
-            path: "/"
+            sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+            path: "/",
         };
 
         return res
@@ -215,8 +217,8 @@ const deleteAccount = asyncHandler(async (req, res) => {
     const options = {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
-        path: "/"
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+        path: "/",
     };
 
     return res
