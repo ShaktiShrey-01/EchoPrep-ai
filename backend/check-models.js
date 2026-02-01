@@ -1,6 +1,14 @@
+import dotenv from "dotenv";
 import { GoogleGenerativeAI } from "@google/generative-ai";
-// Replace with your actual key
-const genAI = new GoogleGenerativeAI("AIzaSyBsm-AVz7_9bsrXY4-Pcl8cQUHSZqhPhZo"); 
+
+dotenv.config();
+
+if (!process.env.GEMINI_API_KEY) {
+  console.error("GEMINI_API_KEY is missing. Add it to backend/.env before running this script.");
+  process.exit(1);
+}
+
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 async function listModels() {
   try {

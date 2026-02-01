@@ -1,15 +1,11 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-
-// Ensure this key is correct in your .env file
-
-
 export const generateFeedback = async (promptText) => {
     try {
         if (!process.env.GEMINI_API_KEY) {
             throw new Error("GEMINI_API_KEY is missing in .env file");
         }
 
-        const genAI = new GoogleGenerativeAI("AIzaSyBGfeL4xjn3c7E17OUqZXRewfuP2iamZVU");
+        const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
         // --- CRITICAL FIX: Use the newer 2.0 model ---
         // gemini-1.5-flash is deprecated/retired as of late 2025.
         // gemini-2.0-flash is the current standard.
