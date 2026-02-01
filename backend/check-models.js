@@ -12,7 +12,8 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 async function listModels() {
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    // Use a supported model for v1beta
+    const model = genAI.getGenerativeModel({ model: "gemini-flash-latest" });
     // There isn't a direct 'listModels' helper in the simple client, 
     // but trying to run this will confirm if gemini-pro works.
     const result = await model.generateContent("Test");
