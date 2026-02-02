@@ -82,7 +82,7 @@ const Signup = () => {
                 <input
                   {...register("fullName", { required: "Name is required" })}
                   className={`w-full bg-slate-900/50 border ${errors.fullName ? 'border-red-500/50 ring-2 ring-red-500/10' : 'border-slate-800 focus:border-cyan-500/50 focus:ring-4 focus:ring-cyan-500/5'} rounded-xl py-3.5 pl-10 pr-4 text-white text-sm outline-none transition-all`}
-                  placeholder="John Doe"
+                  placeholder="Name"
                 />
               </div>
               {errors.fullName && <p className="text-red-400 text-[11px] font-semibold mt-1 ml-1 flex items-center gap-1"><AlertCircle size={12} /> {errors.fullName.message}</p>}
@@ -99,7 +99,7 @@ const Signup = () => {
                     pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i, message: "Invalid email address" }
                   })}
                   className={`w-full bg-slate-900/50 border ${errors.email ? 'border-red-500/50 ring-2 ring-red-500/10' : 'border-slate-800 focus:border-cyan-500/50 focus:ring-4 focus:ring-cyan-500/5'} rounded-xl py-3.5 pl-10 pr-4 text-white text-sm outline-none transition-all`}
-                  placeholder="john@example.com"
+                  placeholder="name@gmail.com"
                 />
               </div>
               {errors.email && <p className="text-red-400 text-[11px] font-semibold mt-1 ml-1 flex items-center gap-1"><AlertCircle size={12} /> {errors.email.message}</p>}
