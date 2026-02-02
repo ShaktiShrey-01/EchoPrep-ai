@@ -48,7 +48,7 @@ Users upload their PDF resumes, and our **Generative AI engine** instantly analy
 ### 4. 📊 Comprehensive Performance Report
 * **Multi-Metric Grading:** Scores candidates on **Technical Accuracy**, **Communication Clarity**, and **Subject Depth**.
 * **JSON-Structured Data:** Uses Gemini 2.0 to guarantee consistent, parsable feedback data every time.
-
+### 5. Max question asked by i will be 5 after which it will automatically end the interview and redirect to feedback page or elase you can end interview by clicking end interview button
 ---
 
 ## 🧠 Technical Architecture & Design Decisions
