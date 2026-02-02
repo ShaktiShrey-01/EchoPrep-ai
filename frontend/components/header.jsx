@@ -53,7 +53,7 @@ const Header = () => {
         <div className="absolute left-1/2 transform -translate-x-1/2 flex-1 text-center z-20">
           <h1 className="text-2xl md:text-3xl font-black tracking-wide select-none cursor-pointer group">
             <span className="bg-clip-text text-transparent bg-gradient-to-br from-white via-slate-200 to-slate-500 group-hover:to-white transition-all duration-500">Echo</span><span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600 group-hover:brightness-125 transition-all duration-500">Prep</span>
-            <span className="bg-clip-text text-transparent bg-gradient-to-br from-white via-slate-200 to-slate-500 ml-2 group-hover:to-white transition-all duration-500 text-sm md:text-base">AI</span>
+            <span className="bg-clip-text text-transparent bg-gradient-to-br from-white via-slate-200 to-slate-500 ml-2 group-hover:to-white transition-all duration-500 text-lg md:text-xl">AI</span>
           </h1>
         </div>
 
